@@ -66,4 +66,10 @@
   - ___Suggested___
     - [React Native vs Flutter](https://blog.codemagic.io/flutter-vs-react-native-a-developers-perspective/)
     - [Color Identificaion in Python](https://towardsdatascience.com/color-identification-in-images-machine-learning-application-b26e770c4c71)
+   - ___General___
+      - [How to be successful in ACM Projects](https://docs.google.com/document/d/18Zi3DrKG5e6g5Bojr8iqxIu6VIGl86YBSFlsnJnlM88/edit?usp=sharing)
+      -	[Overview of making API calls](https://snipcart.com/blog/apis-integration-usage-benefits)
+      - [Professor Cole's How to Program (and the "yellow pad" technique)](https://personal.utdallas.edu/~jxc064000/HowToProgram.html)
+      - [GitHub Cheatsheet PDF](https://www.atlassian.com/dam/jcr:8132028b-024f-4b6b-953e-e68fcce0c5fa/atlassian-git-cheatsheet.pdf)
+      - [Common GitHub Commands](https://education.github.com/git-cheat-sheet-education.pdf)
 
