@@ -13,7 +13,7 @@
 
 # Table of contents
 
-- [MVP (Minimum Viable Product)](#mvp)
+- [MVP (Minimum Viable Product)](#mvp-minimum-viable-product)
 - [Stretch Goals](#stretch-goals)
 - [Tech Stack](#tech-stack)
 - [Dependencies](#dependencies)
