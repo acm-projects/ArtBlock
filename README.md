@@ -40,7 +40,7 @@
 - ___Backend___
   - [Django](https://www.djangoproject.com/)
 - ___Artwork APIs___
-  - [Artpi](https://www.artpi.co/how-it-works)
+  - [Rijksmuseum API](https://data.rijksmuseum.nl/object-metadata/api/)
   - [Met Museum](https://metmuseum.github.io)
   
 ## Dependencies
@@ -55,6 +55,7 @@
     - [Git Bash](https://git-scm.com/downloads)
   - ___Design/Wireframing___
     - [Adobe XD](https://www.adobe.com/products/xd.html)
+  - [___Installation Guide___](https://docs.google.com/document/d/1ClNwpayZMywN7oAIqu_Ey6c9pQLTv4TxO0ivos7__x0/edit)
 
 ## Resources
   - ___Tutorials___
