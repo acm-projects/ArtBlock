@@ -1,9 +1,6 @@
 <p align="center">
-  <a href="https://example.com/">
-    <img src="https://via.placeholder.com/72" alt="Logo" width=72 height=72>
-  </a>
 
-  <h3 align="center">ArtBlock</h3>
+  <h1 align="center">ArtBlock</h1>
 
   <p align="center">
     Never struggle with art block again with this app that helps generate inspiration through reverse image searching and idea generation.
