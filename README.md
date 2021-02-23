@@ -33,6 +33,7 @@
 ## Tech Stack
 - ___Frontend___
   - [Flutter](https://flutter.dev/)
+- ___Backend___
   - [Django](https://www.djangoproject.com/)
 - ___Artwork APIs___
   - [Rijksmuseum API](https://data.rijksmuseum.nl/object-metadata/api/)
