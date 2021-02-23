@@ -32,9 +32,7 @@
 
 ## Tech Stack
 - ___Frontend___
-  - [React Native](https://reactnative.dev/) or [Flutter](https://flutter.dev/)
-    - React Native uses JavaScript, Flutter uses Dart. Both are easy to pick up, so choose what you prefer.
-- ___Backend___
+  - [Flutter](https://flutter.dev/)
   - [Django](https://www.djangoproject.com/)
 - ___Artwork APIs___
   - [Rijksmuseum API](https://data.rijksmuseum.nl/object-metadata/api/)
@@ -43,11 +41,10 @@
 ## Dependencies
   
   - ___IDE___
-    - [VS Code](https://code.visualstudio.com/) if React, [Android Studio](https://developer.android.com/studio) if Flutter
+    - [Android Studio](https://developer.android.com/studio)
   - ___Code___
     - [Python 3.9.1](https://www.python.org/downloads/release/python-391/)
     - [Django](https://docs.djangoproject.com/en/3.1/topics/install/#installing-official-release)
-    - [Node.js](https://nodejs.org/en/) if React 
   - ___Git___
     - [Git Bash](https://git-scm.com/downloads)
   - ___Design/Wireframing___
