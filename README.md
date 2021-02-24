@@ -50,7 +50,6 @@
     - [Git Bash](https://git-scm.com/downloads)
   - ___Design/Wireframing___
     - [Adobe XD](https://www.adobe.com/products/xd.html)
-  - [___Installation Guide___](https://docs.google.com/document/d/1ClNwpayZMywN7oAIqu_Ey6c9pQLTv4TxO0ivos7__x0/edit)
  
 ## GitHub Cheat Sheet
 (Thanks Emily ^-^)
