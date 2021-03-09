@@ -8,6 +8,22 @@ class Nav extends StatefulWidget {
 class _NavState extends State<Nav> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.shuffle,
+              ),
+              label: 'random'),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+              ),
+              label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.push_pin), label: 'pins'),
+        ],
+      ),
+    );
   }
 }
