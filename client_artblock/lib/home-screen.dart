@@ -50,7 +50,21 @@ class Home extends StatelessWidget {
             children: <Widget>[
               Ink(
                 decoration: ShapeDecoration(
-                  shape: CircleBorder(), // I want to add a border to the button
+                  shape: CircleBorder(),
+                  shadows: [
+                    BoxShadow(
+                      color: Colors.grey[600],
+                      offset: Offset(1.0, 1.0),
+                      blurRadius: 1.5,
+                      spreadRadius: 1.0,
+                    ),
+                    BoxShadow(
+                      color: Colors.white,
+                      offset: Offset(-1.0, -1.0),
+                      blurRadius: 1.5,
+                      spreadRadius: 1.0,
+                    ),
+                  ],
                 ),
                 child: IconButton(
                   onPressed: () {},
@@ -60,7 +74,21 @@ class Home extends StatelessWidget {
               ),
               Ink(
                 decoration: ShapeDecoration(
-                  shape: CircleBorder(), // I want to add a border to the button
+                  shape: CircleBorder(),
+                  shadows: [
+                    BoxShadow(
+                      color: Colors.grey[600],
+                      offset: Offset(1.0, 1.0),
+                      blurRadius: 1.0,
+                      spreadRadius: .5,
+                    ),
+                    BoxShadow(
+                      color: Colors.white,
+                      offset: Offset(-1.0, -1.0),
+                      blurRadius: 1.0,
+                      spreadRadius: .5,
+                    ),
+                  ],
                 ),
                 child: IconButton(
                   onPressed: () {},
