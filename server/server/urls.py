@@ -1,4 +1,4 @@
-"""server URL Configuration
+"""testing URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -14,8 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
+
+from quickstart import views
+from quickstart.views import GetColors, GetKeywords
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    re_path(r'^Color:(?P<color>[A-Za-z]{3,6})$', GetColors.as_view(template_name='colors.html'), name='Color View'), # ex: Color:Red
+    re_path(r'^Color:(?P<color>[a-z0-9]{6})$', GetColors.as_view(template_name='colors.html'), name='Color View by Hex'), # ex: Color:c0c0c0
+    re_path(r'^(?P<keyword>[A-Za-z]+)$', GetKeywords.as_view(template_name='colors.html'), name='Keyword View'), # ex: Bulldozer
+    re_path(r'^$', views.index, name="index"),
 ]
