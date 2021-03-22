@@ -1,8 +1,11 @@
-1. Navigate to ArtBlock - Copy\server
-2. Run powershell in here
+There's other ways to run the server but here's how I do it:
+1. Navigate to ArtBlock\server in Windows Explorer
+2. Run powershell by typing "powershell" into the file path
 3. Type "python manage.py runserver". Server should be running at 127.0.0.1:8000/.
 
-From here, it's set up so you can access the API in three different ways (as defined in server\server\urls.py).
+or just skip the second step and type the third command directly into the file path
+
+From here, it's set up so you can access the API in three different ways (as defined in server\server\urls.py). This is done by using different url paths in your browser.
 
 To search by name of color, navigate to 127.0.0.1:8000/Color:Colorname, such as 127.0.0.1:8000/Color:Red. This is case-sensitive. The API I'm using supports these color names: Red, Orange, Yellow, Green, Blue, Violet, Brown, Grey, Black, White.
 
