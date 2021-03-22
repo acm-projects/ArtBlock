@@ -1,0 +1,15 @@
+1. Navigate to ArtBlock - Copy\server
+2. Run powershell in here
+3. Type "python manage.py runserver". Server should be running at 127.0.0.1:8000/.
+
+From here, it's set up so you can access the API in three different ways (as defined in server\server\urls.py).
+
+To search by name of color, navigate to 127.0.0.1:8000/Color:Colorname, such as 127.0.0.1:8000/Color:Red. This is case-sensitive. The API I'm using supports these color names: Red, Orange, Yellow, Green, Blue, Violet, Brown, Grey, Black, White.
+
+To search by hexcode, navigate to 127.0.0.1:8000/Color:hexcode, such as 127.0.0.1:8000/Color:fcba03. Hexcode should be 6 characters with lowercase letters. Internally, the hexcode is rounded to the nearest color.
+
+To search by keyword, navigate to 127.0.0.1:8000/keyword, such as 127.0.0.1:8000/tree. Capitalization shouldn't matter here.
+
+By default, the webpage returns 3 images, but you can change the "limit" variable in server\quickstart\services.py if you want.
+
+Note: Unfortunately, this is very slow right now, so when you filter by color it'll take a long time to load. You can still see the progress in the terminal - when you see the word "loop," that means one image has been found already. Filter by keyword should be fairly fast though because the API does support searching by title.
