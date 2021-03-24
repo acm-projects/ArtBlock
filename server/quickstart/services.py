@@ -2,18 +2,58 @@ import os
 import requests
 
 
-def get_keywords(keyword):
+def get_queries(query):
+    # todo: handle all-lowercase queries
     url = 'https://api.harvardartmuseums.org/object'
-    r = requests.get(url, params={'apikey': os.getenv('HAR_ACCESS_TOKEN'), 'classification': '26|21',
-                                    'hasimage': '1', 'size': '10', 'title': keyword})
-    keywords = r.json()
-    info = keywords['info']
-    records = keywords['records']
-    keyword_list = []
+    payload = {'apikey': os.getenv('HAR_ACCESS_TOKEN'), 'classification': '26|21',
+                                    'hasimage': '1', 'size': '10'}
+
+    if "&" in query:
+        query = query.split("&")
+        for filter in query:
+            query_type = get_query_type(filter)
+            if query_type is None or query_type in payload: # if invalid query or already exists
+                print("error: invalid query") # need error handling
+            payload[get_query_type(filter)] = filter[filter.index(":")+1:]
+    else: # keyword search (includes titles, artists, description, classification, culture, and worktype)
+        if ":" in query:
+            payload[get_query_type(query)] = query[query.index(":") + 1:]
+        else:
+            payload['keyword'] = query
+
+    r = requests.get(url, params=payload)
+    queries = r.json()
+    # print(r.url)
+    info = queries['info'] # todo: for next pages
+    records = queries['records']
+    query_list = []
     for record in records:  # stores everything from request into the array
         if record['primaryimageurl'] is not None:
-            keyword_list.append(record)
-    return keyword_list
+            query_list.append(record)
+    return query_list
+
+
+def get_query_type(filter):
+    if "Title:" in filter:
+        return "title"
+    if "Culture:" in filter:
+        return "culture"
+    if "Century:" in filter:
+        return "century"
+    if "Medium:" in filter:
+        return "medium"
+    if "Period:" in filter:
+        return "period"
+    if "Person:" in filter:
+        return "person"
+    if "Place:" in filter:
+        return "place"
+    if "Technique:" in filter:
+        return "technique"
+    if "Worktype:" in filter:
+        return "worktype"
+    else:
+        return None
 
 
 def get_colors(color):
@@ -70,7 +110,7 @@ def get_colors(color):
                 for colorObj in record['colors']: # checks every color stored in the image's data
                     hsl = rgbToHsl(int(colorObj['color'][1:], 16))
                     percentColor = 0
-                    if colorObj['hue'] == color and hsl[1] > 0.3 and hsl[2] < 0.8:
+                    if colorObj['hue'] == color and hsl[1] > 0.2 and hsl[2] < 0.8: # doesn't work with grey/white/black!!
                         if colorObj['percent'] < percentColorThreshold and percentColor < percentColorThreshold:
                             percentColor = percentColor + colorObj['percent']
                         else:
