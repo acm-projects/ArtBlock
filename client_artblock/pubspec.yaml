@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_hsvcolor_picker: ^0.0.1
+  flutter_swipable: ^0.1.1
 
 
   # The following adds the Cupertino Icons font to your application.

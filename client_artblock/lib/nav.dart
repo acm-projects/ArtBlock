@@ -11,7 +11,7 @@ class Nav extends StatefulWidget {
 class _NavState extends State<Nav> {
   int _selectedScreen = 1;
 
-  List<Widget> _widgetOptions = [Random(), Home(), Pins()];
+  List<Widget> _widgetOptions = [RandomPage(), Home(), Pins()];
 
   void _onItemTap(int index) {
     setState(() {
