@@ -1,3 +1,4 @@
+import 'package:artblock/color-picker-screen.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
@@ -91,8 +92,11 @@ class Home extends StatelessWidget {
                   ],
                 ),
                 child: IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.pool_sharp),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ColorPage()));
+                  },
+                  icon: Icon(Icons.color_lens),
                   color: Colors.black,
                 ),
               ),
