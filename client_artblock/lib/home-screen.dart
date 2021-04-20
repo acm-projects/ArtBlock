@@ -116,6 +116,6 @@ class Home extends StatelessWidget {
 
   Future<List<dynamic>> getData() async {
     var response = await http.get('http://127.0.0.1:8000/query/dog');
-    debugPrint(jsonDecode(response.body)[0]['url']);
+    //debugPrint(jsonDecode(response.body)[0]['url']);
   }
 }
