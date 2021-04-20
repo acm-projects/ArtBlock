@@ -2,6 +2,20 @@ import os
 import requests
 
 
+def curated_images(): # returns 15 of the latest curated images
+    url = 'https://api.pexels.com/v1/curated'
+    headers = {'Authorization': os.getenv('PEX_ACCESS_KEY')}
+    r = requests.get(url, headers=headers)
+    response = r.json()
+    photos = response['photos']
+    img_list = []
+    for photo in photos:
+        if photo['url'] is not None:
+            newRecord = {'url': photo['src']['medium'], 'urlthumb': photo['src']['tiny'], 'urlbig': photo['src']['large2x'],
+                         'photographer': photo['photographer'], 'sourceurl': photo['url']}
+            img_list.append(newRecord)
+    return img_list
+
 def reverse_image(imagePath): # possible todo: take in image through post?
     from dominantcolors import get_image_dominant_colors
     dominant_colors = get_image_dominant_colors(image_path=imagePath, num_colors=1)
@@ -31,6 +45,8 @@ def get_queries(query):
     payload = {'apikey': os.getenv('HAR_ACCESS_TOKEN'), 'classification': '26|21',
                'hasimage': '1', 'size': '10'} # change size as needed
 
+    payload['keyword'] = query
+    ''' # unused: was originally for filtering by categories like culture
     if "&" in query:
         query = query.split("&")
         for filter in query:
@@ -43,10 +59,10 @@ def get_queries(query):
             payload[get_query_type(query)] = query[query.index(":") + 1:]
         else:
             payload['keyword'] = query
+    '''
 
     r = requests.get(url, params=payload)
     queries = r.json()
-    # print(r.url)
     info = queries['info'] # todo: for next pages
     records = queries['records']
     query_list = []
@@ -70,7 +86,7 @@ def get_colors(color, query=""):
         lum = hsl[2]
         if sat < 0.15 and 0.1 < lum < 0.65:
             color = "Grey"
-            colorUnsplash = "black_and_white"
+            colorUnsplash = "black-and-white"
         elif lum <= 0.1:
             color = "Black"
             colorUnsplash = "black"
@@ -176,7 +192,8 @@ def get_colors(color, query=""):
     records = colors3['results']
     for record in records:
         newRecord = {'title': record['description'], 'url': record['urls']['small'], 'urlthumb': record['urls']['thumb'],
-                    'urlbig': record['urls']['regular']}
+                     'urlbig': record['urls']['regular'], 'photographer': record['user']['name'],
+                     'profile': record['user']['links']['self'] + '?utm_source=ArtBlock&utm_medium=referral'}
         # note: title might be very long
         # three different sizes of image: thumb < small < regular
         colors_list.append(newRecord)
@@ -184,7 +201,7 @@ def get_colors(color, query=""):
     return colors_list
 
 
-def get_query_type(filter):
+def get_query_type(filter): # unused...
     if "Title:" in filter:
         return "title"
     if "Culture:" in filter:
