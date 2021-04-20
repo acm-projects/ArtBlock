@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:artblock/nav.dart';
+import 'package:artblock/camera.dart';
 
 void main() {
   runApp(MyApp());
