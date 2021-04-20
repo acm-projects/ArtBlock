@@ -12,7 +12,7 @@ def curated_images(): # returns 15 of the latest curated images
     for photo in photos:
         if photo['url'] is not None:
             newRecord = {'url': photo['src']['medium'], 'urlthumb': photo['src']['tiny'], 'urlbig': photo['src']['large2x'],
-                         'photographer': photo['photographer'], 'sourceurl': photo['url']}
+                         'portrait': photo['src']['portrait'], 'photographer': photo['photographer'], 'sourceurl': photo['url']}
             img_list.append(newRecord)
     return img_list
 
