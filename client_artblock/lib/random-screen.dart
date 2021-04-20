@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swipable/flutter_swipable.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 // Database
 final List data = [
@@ -18,6 +20,12 @@ class RandomPage extends StatefulWidget {
 
 //images gotten from the data base
 class _RandomPageState extends State<RandomPage> {
+  @override
+  void initState() {
+    super.initState();
+    getCardData();
+  }
+
   List<Card> cards = [
     Card(
       data[0]['color'],
@@ -45,6 +53,17 @@ class _RandomPageState extends State<RandomPage> {
         children: cards,
       ),
     );
+  }
+
+  void getCardData() async {
+    var data = await getData();
+    data.forEach((element) => debugPrint("The data is ${element['url']}"));
+  }
+
+  Future<List<dynamic>> getData() async {
+    var response = await http.get('http://127.0.0.1:8000/query/art');
+    //debugPrint(jsonDecode(response.body)[0]['url']);
+    return jsonDecode(response.body);
   }
 }
 

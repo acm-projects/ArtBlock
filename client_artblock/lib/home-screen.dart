@@ -1,5 +1,10 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:artblock/color-picker-screen.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
 
 class Home extends StatelessWidget {
   TextEditingController searchController = new TextEditingController();
@@ -68,7 +73,9 @@ class Home extends StatelessWidget {
                   ],
                 ),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    getData();
+                  },
                   icon: Icon(Icons.camera_alt_rounded),
                   color: Colors.black,
                 ),
@@ -105,5 +112,10 @@ class Home extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<List<dynamic>> getData() async {
+    var response = await http.get('http://127.0.0.1:8000/query/dog');
+    //debugPrint(jsonDecode(response.body)[0]['url']);
   }
 }

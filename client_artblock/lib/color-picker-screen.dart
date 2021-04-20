@@ -3,8 +3,6 @@ import 'package:flutter_hsvcolor_picker/flutter_hsvcolor_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'home-screen.dart';
-
 class _ColorPageState extends State<ColorPage> {
   Color _customColor = Colors.blue;
   @override
