@@ -66,7 +66,7 @@ class _CameraScreenState extends State<CameraScreen> {
     if(imageFile == null){
       return Text("No Image Selected");
     } else {
-      Image.file(imageFile,width: 400,height: 400);
+      return Image.file(imageFile,width: 400,height: 400);
     }
   }
   
