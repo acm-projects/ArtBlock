@@ -1,6 +1,9 @@
+import 'package:artblock/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:artblock/nav.dart';
 import 'package:artblock/camera.dart';
+
+import 'home-screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ArtBlock',
-      home: Nav(),
+      theme: ThemeData (primaryColor: Colors.white),
+      home: Home(),
     );
   }
 }
