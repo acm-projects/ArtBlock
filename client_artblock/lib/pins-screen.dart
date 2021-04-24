@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 class Pins extends StatefulWidget {
   @override
@@ -113,4 +115,24 @@ class _PinsState extends State<Pins> {
     //debugPrint(jsonDecode(response.body)[0]['url']);
     return jsonDecode(response.body);
   }
+
+  _read() async {
+    try {
+      final directory = await getApplicationDocumentsDirectory();
+      final file = File('${directory.path}/my_file.txt');
+      String text = await file.readAsString();
+      print(text);
+    } catch (e) {
+      print("Couldn't read file");
+    }
+  }
+
+  _save() async {
+    final directory = await getApplicationDocumentsDirectory();
+    final file = File('${directory.path}/my_file.txt');
+    final text = 'Hello World!';
+    await file.writeAsString(text);
+    print('saved');
+  }
+
 }
