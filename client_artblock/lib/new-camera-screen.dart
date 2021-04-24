@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-/* add shared_preferences^0.5.7 to dependencies under yaml */
 void main() {
   runApp(new MaterialApp(
     title: "Camera",
@@ -17,13 +16,18 @@ class CameraScreen extends StatefulWidget {
 
 class _CameraScreenState extends State<CameraScreen> {
   File imageFile;
-  String _imagepath;
   // upload from gallery method
   _openGallery(BuildContext context) async {
     var picture = await ImagePicker.pickImage(source: ImageSource.gallery);
     this.setState(() {
       imageFile = picture;
     });
+    final File image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    final String path = await getApplicationDocumentsDirectory().path;
+    final File newImage = await image.copy('$path/image1.png');
+    setState(() {
+  _image = newImage;
+});
     Navigator.of(context).pop();
   }
 
@@ -33,11 +37,13 @@ class _CameraScreenState extends State<CameraScreen> {
     this.setState(() {
       imageFile = picture;
     });
+    final File image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    final String path = await getApplicationDocumentsDirectory().path;
+    final File newImage = await image.copy('$path/image1.png');
+    setState(() {
+  _image = newImage;
+});
     Navigator.of(context).pop();
-  }
-  
-  void initState() {
-    superinitState();
   }
 
   Future<void> _showChoiceDialog(BuildContext context) {
@@ -53,7 +59,6 @@ class _CameraScreenState extends State<CameraScreen> {
                     child: Text("Gallery"),
                     onTap: () {
                       _openGallery(context);
-                      saveImage(_imagepath);
                     },
                   ),
                   Padding(padding: EdgeInsets.all(8.0)),
@@ -61,7 +66,6 @@ class _CameraScreenState extends State<CameraScreen> {
                     child: Text("Camera"),
                     onTap: () {
                       _openCamera(context);
-                      saveImage(_imagepath);
                     },
                   )
                 ],
@@ -105,8 +109,4 @@ class _CameraScreenState extends State<CameraScreen> {
     );
   }
   
-  void saveImage(path) async {
-    SharedPrefernces saveimage = SharedPreferences.getInstance();
-    saveimage.setString("imagepath", path);
-  }
 }
