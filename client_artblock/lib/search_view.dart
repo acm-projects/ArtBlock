@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:artblock/model/categories_model.dart';
 import 'package:artblock/searchData/searchData.dart';
+import 'package:artblock/views/categoriesView.dart';
+import 'package:artblock/views/imageView.dart';
 import 'package:artblock/widgets/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
@@ -20,7 +22,7 @@ class _SearchViewState extends State<SearchView> {
   List<CategorieModel> categories = new List();
   List<PhotosModel> photos = new List();
   TextEditingController searchController = new TextEditingController();
-  String query = 'nature';
+  //String query = 'nature';
 
   getTrendingPhotos(String query) async {
     var response = await http.get(
@@ -114,32 +116,44 @@ class CategoriesTile extends StatelessWidget {
   CategoriesTile({@required this.title, @required this.imgUrl});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 4),
-      child: Stack(
-        children: <Widget>[
-          ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.network(imgUrl,
-                  height: 50, width: 100, fit: BoxFit.cover)),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.black26,
-              borderRadius: BorderRadius.circular(8),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CategoriesView(
+                      categorieName: title.toLowerCase(),
+                    )));
+      },
+      child: Container(
+        margin: EdgeInsets.only(right: 4),
+        child: Stack(
+          children: <Widget>[
+            GestureDetector(
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.network(imgUrl,
+                      height: 50, width: 100, fit: BoxFit.cover)),
             ),
-            alignment: Alignment.center,
-            height: 50,
-            width: 100,
-            child: Text(
-              title,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Roboto'),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.black26,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              alignment: Alignment.center,
+              height: 50,
+              width: 100,
+              child: Text(
+                title,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Roboto'),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

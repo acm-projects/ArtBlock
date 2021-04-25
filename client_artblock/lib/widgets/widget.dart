@@ -1,4 +1,5 @@
 import 'package:artblock/model/photos_model.dart';
+import 'package:artblock/views/imageView.dart';
 import 'package:flutter/material.dart';
 
 Widget BrandName() {
@@ -25,9 +26,25 @@ Widget photosList({List<PhotosModel> photos, context}) {
       mainAxisSpacing: 6.0,
       crossAxisSpacing: 6.0,
       children: photos.map((photo) {
-        return GridTile(child: Container(child: ClipRRect(
-          borderRadius: BorderRadius.circular(16),
-          child: Image.network(photo.src.portrait, fit: BoxFit.cover,))));
+        return GridTile(
+            child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => ImageView(
+                  imgUrl: photo.src.portrait,
+                )));
+          },
+          child: Hero(
+            tag: photo.src.portrait,
+            child: Container(
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image.network(
+                      photo.src.portrait,
+                      fit: BoxFit.cover,
+                    ))),
+          ),
+        ));
       }).toList(),
     ),
   );
