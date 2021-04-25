@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package: flutter/foundation.dart';
 
+/* add image_picker to dependencies under yaml */
 void main() {
   runApp(new MaterialApp(
     title: "Camera",
@@ -13,8 +13,6 @@ void main() {
 
 class CameraScreen extends StatefulWidget {
   @override
-  final Storage storage;
-  Camera({Key key, this.storage}) : super(key: key);
   _CameraScreenState createState() => _CameraScreenState();
 }
 
@@ -26,8 +24,8 @@ class _CameraScreenState extends State<CameraScreen> {
     this.setState(() {
       imageFile = picture;
     });
-    final File image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    final String path = await getApplicationDocumentsDirectory().path;
+    Directory appDocDir = await getApplicationDocumentsDirectory();
+String appDocPath = appDocDir.path;
     Navigator.of(context).pop();
   }
 
@@ -37,11 +35,11 @@ class _CameraScreenState extends State<CameraScreen> {
     this.setState(() {
       imageFile = picture;
     });
-    final File image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    final String path = await getApplicationDocumentsDirectory().path;
+    Directory appDocDir = await getApplicationDocumentsDirectory();
+String appDocPath = appDocDir.path;
     Navigator.of(context).pop();
   }
- 
+
   Future<void> _showChoiceDialog(BuildContext context) {
     return showDialog(
         context: context,
@@ -104,6 +102,4 @@ class _CameraScreenState extends State<CameraScreen> {
       ),
     );
   }
-  
 }
-
