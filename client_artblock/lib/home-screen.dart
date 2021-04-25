@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:artblock/camera-feature.dart';
 import 'package:artblock/color-picker-screen.dart';
 import 'package:artblock/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
-
 
 class Home extends StatelessWidget {
   String query;
@@ -57,8 +57,7 @@ class Home extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => SearchView(
-                                        searchQuery: searchController.text
-                                          )));
+                                          searchQuery: searchController.text)));
                             },
                             child: Icon(Icons.search)),
                         border: InputBorder.none),
@@ -86,8 +85,8 @@ class Home extends StatelessWidget {
                   ],
                 ),
                 child: IconButton(
-                  onPressed: () async {
-                    getData();
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CameraScreen()));
                   },
                   icon: Icon(Icons.camera_alt_rounded),
                   color: Colors.black,
@@ -125,10 +124,5 @@ class Home extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Future<List<dynamic>> getData() async {
-    var response = await http.get('http://127.0.0.1:8000/query/dog');
-    //debugPrint(jsonDecode(response.body)[0]['url']);
   }
 }

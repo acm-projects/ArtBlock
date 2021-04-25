@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ArtBlock',
       theme: ThemeData (primaryColor: Colors.white),
-      home: Home(),
+      home: Nav(),
     );
   }
 }

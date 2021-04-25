@@ -8,6 +8,7 @@ class _ColorPageState extends State<ColorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: Colors.black,
       body: Column(
         children: <Widget>[
           AppBar(
@@ -22,7 +23,9 @@ class _ColorPageState extends State<ColorPage> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Nav()))
                     }),
-            actions: [IconButton(icon: Icon(Icons.check), onPressed: () => {})],
+            actions: [IconButton(icon: Icon(Icons.check), onPressed: () => {
+
+            })],
           ),
           SizedBox(height: 15),
           Container(
