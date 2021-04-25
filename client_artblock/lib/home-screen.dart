@@ -2,11 +2,15 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:artblock/color-picker-screen.dart';
+import 'package:artblock/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 
+
 class Home extends StatelessWidget {
+  String query;
+
   TextEditingController searchController = new TextEditingController();
 
   @override
@@ -47,7 +51,16 @@ class Home extends StatelessWidget {
                         hintText: "Search",
                         contentPadding: EdgeInsets.symmetric(
                             horizontal: 32.0, vertical: 14.0),
-                        suffixIcon: Icon(Icons.search),
+                        suffixIcon: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SearchView(
+                                        searchQuery: searchController.text
+                                          )));
+                            },
+                            child: Icon(Icons.search)),
                         border: InputBorder.none),
                   ))),
           SizedBox(height: 30),
