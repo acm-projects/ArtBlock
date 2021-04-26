@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'package:artblock/main.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Pins extends StatefulWidget {
   @override
@@ -9,8 +11,11 @@ class Pins extends StatefulWidget {
 }
 
 class _PinsState extends State<Pins> {
+  Future<List> gridImages;
+
   @override
   void initState() {
+    gridImages = retrieveImageList();
     super.initState();
   }
 
@@ -97,20 +102,8 @@ class _PinsState extends State<Pins> {
         }
         return Container();
       },
-      future: getImage(),
+      future: retrieveImageList(),
     );
   }
 
-  Future<List<dynamic>> getImage() async {
-    List urls = [];
-    List data = await getData();
-    data.forEach((element) => urls.add(element['url']));
-    return urls;
-  }
-
-  Future<List<dynamic>> getData() async {
-    var response = await http.get('http://127.0.0.1:8000/query/art');
-    //debugPrint(jsonDecode(response.body)[0]['url']);
-    return jsonDecode(response.body);
-  }
 }

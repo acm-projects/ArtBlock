@@ -1,12 +1,16 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:artblock/camera-feature.dart';
 import 'package:artblock/color-picker-screen.dart';
+import 'package:artblock/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 
 class Home extends StatelessWidget {
+  String query;
+
   TextEditingController searchController = new TextEditingController();
 
   @override
@@ -47,7 +51,15 @@ class Home extends StatelessWidget {
                         hintText: "Search",
                         contentPadding: EdgeInsets.symmetric(
                             horizontal: 32.0, vertical: 14.0),
-                        suffixIcon: Icon(Icons.search),
+                        suffixIcon: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SearchView(
+                                          searchQuery: searchController.text)));
+                            },
+                            child: Icon(Icons.search)),
                         border: InputBorder.none),
                   ))),
           SizedBox(height: 30),
@@ -73,8 +85,8 @@ class Home extends StatelessWidget {
                   ],
                 ),
                 child: IconButton(
-                  onPressed: () async {
-                    getData();
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CameraScreen()));
                   },
                   icon: Icon(Icons.camera_alt_rounded),
                   color: Colors.black,
@@ -112,10 +124,5 @@ class Home extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Future<List<dynamic>> getData() async {
-    var response = await http.get('http://127.0.0.1:8000/query/dog');
-    //debugPrint(jsonDecode(response.body)[0]['url']);
   }
 }
