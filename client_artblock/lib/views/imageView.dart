@@ -1,3 +1,4 @@
+import 'package:artblock/main.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -33,6 +34,7 @@ class _ImageViewState extends State<ImageView> {
               children: <Widget>[
                 GestureDetector(
                   onTap: () {
+                    saveImage(widget.imgUrl);
                     Navigator.pop(context);
                   },
                   child: Stack(

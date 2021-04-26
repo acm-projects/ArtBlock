@@ -16,6 +16,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 dependencies:
   image_picker:
+  shared_preferences:
   flutter:
     sdk: flutter
   flutter_hsvcolor_picker: ^0.0.1
