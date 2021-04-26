@@ -16,6 +16,7 @@ environment:
 dependencies:
   path_provider:
   image_picker:
+  shared_preferences:
   flutter:
     sdk: flutter
   flutter_hsvcolor_picker: ^0.0.1
