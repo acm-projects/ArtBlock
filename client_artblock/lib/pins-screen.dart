@@ -92,8 +92,7 @@ class _PinsState extends State<Pins> {
                                 borderRadius: BorderRadius.circular(8.0),
                                 image: DecorationImage(
                                     image: NetworkImage(
-                                        'https://cors-anywhere.herokuapp.com/' +
-                                            urls[index]))),
+                                urls[index]))),
                           );
                         }),
                   )),
