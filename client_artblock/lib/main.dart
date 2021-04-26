@@ -1,10 +1,7 @@
 import 'package:artblock/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:artblock/nav.dart';
-import 'package:artblock/camera.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'home-screen.dart';
 
 void main() {
   buildImageList();

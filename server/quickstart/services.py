@@ -62,6 +62,7 @@ def get_queries(query):
     '''
 
     r = requests.get(url, params=payload)
+    # print(r.url)
     queries = r.json()
     info = queries['info'] # todo: for next pages
     records = queries['records']
