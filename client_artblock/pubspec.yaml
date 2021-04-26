@@ -1,6 +1,5 @@
 name: artblock
 description: A new Flutter project.
-
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
 # followed by an optional build number separated by a +.
@@ -15,11 +14,15 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.7.0 <3.0.0"
 dependencies:
+  path_provider:
   image_picker:
   flutter:
     sdk: flutter
   flutter_hsvcolor_picker: ^0.0.1
   flutter_swipable: ^0.1.1
+  shared_preferences: ^0.5.7
+  palette_generator:
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -39,7 +42,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  # asse  ts:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

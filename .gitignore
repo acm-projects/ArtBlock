@@ -1,4 +1,6 @@
 server/.env
+server/quickstart/__pycache__
+server/server/__pycache__
 
 # Compiled source #
 ###################
