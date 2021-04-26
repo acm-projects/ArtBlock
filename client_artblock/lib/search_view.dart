@@ -46,7 +46,7 @@ class _SearchViewState extends State<SearchView> {
   void initState() {
     getTrendingPhotos(widget.searchQuery);
     categories = getCategories();
-    searchController.text = widget.searchQuery;
+    //searchController.text = widget.searchQuery;
     super.initState();
   }
 

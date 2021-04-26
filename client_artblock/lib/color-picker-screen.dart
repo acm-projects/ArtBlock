@@ -1,10 +1,12 @@
 import 'package:artblock/nav.dart';
+import 'package:artblock/search_view.dart';
 import 'package:flutter_hsvcolor_picker/flutter_hsvcolor_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class _ColorPageState extends State<ColorPage> {
   Color _customColor = Colors.blue;
+  String search;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,9 +25,22 @@ class _ColorPageState extends State<ColorPage> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Nav()))
                     }),
-            actions: [IconButton(icon: Icon(Icons.check), onPressed: () => {
-
-            })],
+            actions: [
+              IconButton(
+                  icon: Icon(Icons.check),
+                  onPressed: () => {
+                    search = _customColor.value.toRadixString(16),
+                    search = search.substring(2, search.length),
+                    print(_customColor.value.toRadixString(16)),
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                          
+                                builder: (context) => SearchView(
+                                    searchQuery: "art&color=%23" +
+                                        search)))
+                      })
+            ],
           ),
           SizedBox(height: 15),
           Container(
