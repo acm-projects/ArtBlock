@@ -4,8 +4,8 @@ import 'package:artblock/nav.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future main() async {
-  await buildImageList();
   runApp(MyApp());
+  await buildImageList();
 }
 
 class MyApp extends StatelessWidget {
