@@ -3,6 +3,7 @@ import 'package:flutter_swipable/flutter_swipable.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:async';
+import 'package:artblock/main.dart';
 
 // Database
 final List data = [
@@ -26,49 +27,24 @@ class _RandomPageState extends State<RandomPage> {
     super.initState();
   }
 
-  /*
-  // Make own function?
-  void onSwipedRight() {
-    debugPrint("Swiped right");
-  }
-  */
-
   List<Card> cards = [
     Card(
       color: data[0]['color'],
-      onSwipedRight: () {
-        debugPrint("Swiped right");
-      },
     ),
     Card(
       color: data[1]['color'],
-      onSwipedRight: () {
-        debugPrint("Swiped right");
-      },
     ),
     Card(
       color: data[2]['color'],
-      onSwipedRight: () {
-        debugPrint("Swiped right");
-      },
     ),
     Card(
       color: data[3]['color'],
-      onSwipedRight: () {
-        debugPrint("Swiped right");
-      },
     ),
     Card(
       color: data[4]['color'],
-      onSwipedRight: () {
-        debugPrint("Swiped right");
-      },
     ),
     Card(
       color: data[5]['color'],
-      onSwipedRight: () {
-        debugPrint("Swiped right");
-      },
     )
   ];
 
@@ -85,6 +61,8 @@ class _RandomPageState extends State<RandomPage> {
         }
         if (apicall.hasData) {
           List urls = apicall.data;
+          cards.forEach((element) =>
+              element.onSwipedRight = () => saveImage(element.url));
           cards.asMap().forEach((index, element) => element.url = urls[index]);
           return Container(
             width: MediaQuery.of(context).size.width * 0.9,
@@ -102,14 +80,16 @@ class _RandomPageState extends State<RandomPage> {
 
   Future<List<dynamic>> getCardData() async {
     List urls = [];
+    debugPrint("first");
     var data = await getData();
+    debugPrint("second");
     //data.forEach((element) => debugPrint("The data is ${element['url']}"));
     data.forEach((element) => urls.add(element['url']));
     return urls;
   }
 
   Future<List<dynamic>> getData() async {
-    var response = await http.get('http://127.0.0.1:8000/curated');
+    var response = await http.get('http://10.0.2.2:8000/curated');
     //debugPrint(jsonDecode(response.body)[0]['url']);
     return jsonDecode(response.body);
   }
@@ -118,9 +98,9 @@ class _RandomPageState extends State<RandomPage> {
 // swipable widget
 class Card extends StatelessWidget {
   final Color color;
-  final VoidCallback onSwipedRight; // maybe shouldn't use VoidCallback?
+  VoidCallback onSwipedRight; // maybe shouldn't use VoidCallback?
   var url;
-  Card({@required this.color, this.onSwipedRight});
+  Card({@required this.color});
 
   @override
   Widget build(BuildContext context) {
