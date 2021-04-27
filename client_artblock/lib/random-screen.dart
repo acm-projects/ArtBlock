@@ -67,13 +67,16 @@ class _RandomPageState extends State<RandomPage> {
           cards.forEach((element) =>
               element.onSwipedRight = () => saveImage(element.url));
           cards.asMap().forEach((index, element) => element.url = urls[index]);
-          return Container(
-            width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height * 0.7,
-            child: Stack(
-              children: cards,
-            ),
-          );
+          return Scaffold(
+              backgroundColor: Color(0xFF373D54),
+              body: Center(
+                  child: Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: MediaQuery.of(context).size.height * 0.7,
+                child: Stack(
+                  children: cards,
+                ),
+              )));
         }
         return Container();
       },

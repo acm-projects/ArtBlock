@@ -150,7 +150,7 @@ class _CameraScreenState extends State<CameraScreen> {
             children: <Widget>[
               _deicdeImageView(),
               ElevatedButton(
-                  color: Color(0xFFCC66C2),
+                  style: ElevatedButton.styleFrom(primary: Color(0xFFCC66C2)),
                   onPressed: () {
                     _showChoiceDialog(context);
                   },
