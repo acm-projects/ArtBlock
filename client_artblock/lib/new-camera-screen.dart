@@ -123,11 +123,24 @@ class _CameraScreenState extends State<CameraScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: new Text(
-              'Image Select',
+        title: RichText(
+            text: TextSpan(
               style: TextStyle(
-                //inbuilt named colors
-                color: Colors.white),
+                // global text style
+                fontSize: 20,
+              ),
+              children: <TextSpan>[
+                TextSpan(
+                    text: 'Image',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold)),
+                TextSpan(
+                    text: 'Select',
+                    style: TextStyle(
+                        color: Colors.red, fontWeight: FontWeight.bold)),
+              ],
+            ),
+          ),
         backgroundColor: Color(0xFF474E67),
       ),
       body: Container(
