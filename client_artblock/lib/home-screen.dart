@@ -21,6 +21,7 @@ class Home extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           SizedBox(height: 250),
+         // Image.asset('assets/graphics/artblock.png'),
           RichText(
             text: TextSpan(
               style: TextStyle(
