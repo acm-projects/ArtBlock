@@ -73,6 +73,7 @@ class _CameraScreenState extends State<CameraScreen> {
                     child: Text("Gallery"),
                     onTap: () {
                       _openGallery(context);
+                      Navigator.pop(context);
                     },
                   ),
                   Padding(padding: EdgeInsets.all(8.0)),
@@ -80,6 +81,7 @@ class _CameraScreenState extends State<CameraScreen> {
                     child: Text("Camera"),
                     onTap: () {
                       _openCamera(context);
+                      Navigator.pop(context);
                     },
                   )
                 ],
@@ -92,7 +94,11 @@ class _CameraScreenState extends State<CameraScreen> {
   // shows selected image or tells the user that no image is selected
   Widget _deicdeImageView() {
     if (imageFile == null) {
-      return Text("No Image Selected");
+      return new Text('No Image Selected',
+          style: TextStyle(
+            //inbuilt named colors
+            color: Colors.white,
+          ));
     } else {
       return Image.file(imageFile, width: 400, height: 400);
     }
@@ -111,33 +117,59 @@ class _CameraScreenState extends State<CameraScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Camera Screen"),
-                    actions: [
-              IconButton(
-                  icon: Icon(Icons.check),
-                  onPressed: () => {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                          
-                                builder: (context) => SearchView(
-                                    searchQuery: "art&color=%23" +
-                                        searchQuery)))
-                      })
+        iconTheme: IconThemeData(color: Colors.white),
+        toolbarHeight: 70,
+        backgroundColor: Color(0xFF474E67),
+        elevation: 2.0,
+        title: RichText(
+          text: TextSpan(
+            style: TextStyle(
+              // global text style
+              fontSize: 20,
+            ),
+            children: <TextSpan>[
+              TextSpan(
+                  text: 'Image',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold)),
+              TextSpan(
+                  text: 'Select',
+                  style: TextStyle(
+                      color: Color(0xFFCC66C2), fontWeight: FontWeight.bold)),
             ],
+          ),
+        ),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.check),
+              onPressed: () => {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SearchView(
+                                searchQuery: "art&color=%23" + searchQuery)))
+                  })
+        ],
       ),
       body: Container(
+        color: Color(0xFF373D54),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               _deicdeImageView(),
               ElevatedButton(
-                onPressed: () {
-                  _showChoiceDialog(context);
-                },
-                child: Text("Select Image"),
-              )
+                  style: ElevatedButton.styleFrom(primary: Color(0xFFCC66C2)),
+                  onPressed: () {
+                    _showChoiceDialog(context);
+                  },
+                  child: new Text(
+                    'SELECT',
+                    style: TextStyle(
+                      //inbuilt named colors
+                      color: Colors.white,
+                    ),
+                  ))
             ],
           ),
         ),

@@ -53,20 +53,25 @@ class _SearchViewState extends State<SearchView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xff373D54),
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
+        toolbarHeight: 70,
+        backgroundColor: Color(0xFF474E67) ,
         title: BrandName(),
-        elevation: 0.0,
+        elevation: 2.0,
       ),
       body: SingleChildScrollView(
         child: Container(
             child: Column(
           children: <Widget>[
+            SizedBox(height: 16,),
             Container(
               decoration: BoxDecoration(
                 color: Color(0xfff58fd),
                 borderRadius: BorderRadius.circular(30),
               ),
+              padding: EdgeInsets.symmetric(horizontal: 24),
               margin: EdgeInsets.symmetric(horizontal: 24),
               child: Row(children: <Widget>[
                 Expanded(
@@ -74,6 +79,7 @@ class _SearchViewState extends State<SearchView> {
                     controller: searchController,
                     decoration: InputDecoration(
                       hintText: "Search",
+                      hintStyle: TextStyle(color: Colors.white),
                       border: InputBorder.none,
                     ),
                   ),
@@ -82,7 +88,7 @@ class _SearchViewState extends State<SearchView> {
                     onTap: () {
                       getTrendingPhotos(searchController.text);
                     },
-                    child: Container(child: Icon(Icons.search)))
+                    child: Container(child: Icon(Icons.search, color: Colors.white,)))
               ]),
             ),
             SizedBox(
