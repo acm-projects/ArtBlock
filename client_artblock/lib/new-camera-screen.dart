@@ -118,9 +118,11 @@ class _CameraScreenState extends State<CameraScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Camera Screen"),
+        title: Text("Take A Picture Or Select An Image"),
+        backgroundColor: Color(0xFF474E67),
       ),
       body: Container(
+        backgroundColor: Color(0xFF373D54),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -130,7 +132,12 @@ class _CameraScreenState extends State<CameraScreen> {
                 onPressed: () {
                   _showChoiceDialog(context);
                 },
-                child: Text("Select Image"),
+                child: new Text(
+              'Select An Image',
+              style: TextStyle(
+                //inbuilt named colors
+                color: Colors.white,
+              ),
               )
             ],
           ),
