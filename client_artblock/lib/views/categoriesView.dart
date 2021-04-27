@@ -44,10 +44,13 @@ class _CategoriesViewState extends State<CategoriesView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFF474E67),
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
+        toolbarHeight: 70,
         title: BrandName(),
-        elevation: 0.0,
+        elevation: 2.0,
+        backgroundColor: Color(0xFF474E67)
       ),
       body: SingleChildScrollView(
         child: Container(
