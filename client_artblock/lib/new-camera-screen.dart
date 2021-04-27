@@ -122,6 +122,11 @@ class _CameraScreenState extends State<CameraScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
+        toolbarHeight: 70,
+        backgroundColor: Color(0xFF474E67) ,
+        title: BrandName(),
+        elevation: 2.0,
         title: RichText(
           text: TextSpan(
             style: TextStyle(
@@ -140,7 +145,6 @@ class _CameraScreenState extends State<CameraScreen> {
             ],
           ),
         ),
-        backgroundColor: Color(0xFF474E67),
       ),
       body: Container(
         color: Color(0xFF373D54),
