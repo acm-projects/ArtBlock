@@ -67,13 +67,41 @@ class _RandomPageState extends State<RandomPage> {
           cards.forEach((element) =>
               element.onSwipedRight = () => saveImage(element.url));
           cards.asMap().forEach((index, element) => element.url = urls[index]);
-          return Container(
-            width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height * 0.7,
-            child: Stack(
-              children: cards,
-            ),
-          );
+          return Scaffold(
+              appBar: AppBar(
+                title: Align(
+                    alignment: Alignment.center,
+                    child: RichText(
+                      text: TextSpan(
+                        style: TextStyle(
+                          // global text style
+                          fontSize: 20,
+                        ),
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: 'Trending ',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                          TextSpan(
+                              text: 'Center',
+                              style: TextStyle(
+                                  color: Color(0xFFCC65C2),
+                                  fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                    )),
+                backgroundColor: Color(0xFF474E67),
+              ),
+              backgroundColor: Color(0xFF373D54),
+              body: Center(
+                  child: Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: MediaQuery.of(context).size.height * 0.7,
+                child: Stack(
+                  children: cards,
+                ),
+              )));
         }
         return Container();
       },
@@ -122,7 +150,7 @@ class Card extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
           color: color,
-          image: DecorationImage(image: NetworkImage(url)),
+          image: DecorationImage(image: NetworkImage(url), fit: BoxFit.cover),
         ),
       ),
       onSwipeRight: (Offset finalPosition) => onSwipedRight(),
