@@ -68,6 +68,31 @@ class _RandomPageState extends State<RandomPage> {
               element.onSwipedRight = () => saveImage(element.url));
           cards.asMap().forEach((index, element) => element.url = urls[index]);
           return Scaffold(
+              appBar: AppBar(
+                title: Align(
+                    alignment: Alignment.center,
+                    child: RichText(
+                      text: TextSpan(
+                        style: TextStyle(
+                          // global text style
+                          fontSize: 20,
+                        ),
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: 'Trending ',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                          TextSpan(
+                              text: 'Center',
+                              style: TextStyle(
+                                  color: Color(0xFFCC65C2),
+                                  fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                    )),
+                backgroundColor: Color(0xFF474E67),
+              ),
               backgroundColor: Color(0xFF373D54),
               body: Center(
                   child: Container(
