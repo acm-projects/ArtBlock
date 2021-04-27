@@ -94,12 +94,11 @@ class _CameraScreenState extends State<CameraScreen> {
   // shows selected image or tells the user that no image is selected
   Widget _deicdeImageView() {
     if (imageFile == null) {
-      return new Text(
-              'No Image Selected',
-              style: TextStyle(
-                //inbuilt named colors
-                color: Colors.white,
-              );
+      return new Text('No Image Selected',
+          style: TextStyle(
+            //inbuilt named colors
+            color: Colors.white,
+          ));
     } else {
       return Image.file(imageFile, width: 400, height: 400);
     }
@@ -124,44 +123,44 @@ class _CameraScreenState extends State<CameraScreen> {
     return Scaffold(
       appBar: AppBar(
         title: RichText(
-            text: TextSpan(
-              style: TextStyle(
-                // global text style
-                fontSize: 20,
-              ),
-              children: <TextSpan>[
-                TextSpan(
-                    text: 'Image',
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold)),
-                TextSpan(
-                    text: 'Select',
-                    style: TextStyle(
-                        color: Colors.red, fontWeight: FontWeight.bold)),
-              ],
+          text: TextSpan(
+            style: TextStyle(
+              // global text style
+              fontSize: 20,
             ),
+            children: <TextSpan>[
+              TextSpan(
+                  text: 'Image',
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold)),
+              TextSpan(
+                  text: 'Select',
+                  style: TextStyle(
+                      color: Colors.red, fontWeight: FontWeight.bold)),
+            ],
           ),
+        ),
         backgroundColor: Color(0xFF474E67),
       ),
       body: Container(
-        backgroundColor: Color(0xFF373D54),
+        color: Color(0xFF373D54),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               _deicdeImageView(),
               ElevatedButton(
-                color: Color(0xFFCC66C2),
-                onPressed: () {
-                  _showChoiceDialog(context);
-                },
-                child: new Text(
-              'SELECT',
-              style: TextStyle(
-                //inbuilt named colors
-                color: Colors.white,
-              ),
-              )
+                  color: Color(0xFFCC66C2),
+                  onPressed: () {
+                    _showChoiceDialog(context);
+                  },
+                  child: new Text(
+                    'SELECT',
+                    style: TextStyle(
+                      //inbuilt named colors
+                      color: Colors.white,
+                    ),
+                  ))
             ],
           ),
         ),

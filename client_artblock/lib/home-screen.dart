@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:artblock/camera-feature.dart';
+import 'package:artblock/new-camera-screen.dart';
 import 'package:artblock/color-picker-screen.dart';
 import 'package:artblock/search_view.dart';
 import 'package:flutter/material.dart';
@@ -86,7 +86,10 @@ class Home extends StatelessWidget {
                 ),
                 child: IconButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => CameraScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CameraScreen()));
                   },
                   icon: Icon(Icons.camera_alt_rounded),
                   color: Colors.black,

@@ -122,7 +122,7 @@ class Card extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
           color: color,
-          image: DecorationImage(image: NetworkImage(url)),
+          image: DecorationImage(image: NetworkImage(url), fit: BoxFit.cover),
         ),
       ),
       onSwipeRight: (Offset finalPosition) => onSwipedRight(),
