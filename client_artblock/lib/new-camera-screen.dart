@@ -73,6 +73,7 @@ class _CameraScreenState extends State<CameraScreen> {
                     child: Text("Gallery"),
                     onTap: () {
                       _openGallery(context);
+                      Navigator.pop(context);
                     },
                   ),
                   Padding(padding: EdgeInsets.all(8.0)),
@@ -80,6 +81,7 @@ class _CameraScreenState extends State<CameraScreen> {
                     child: Text("Camera"),
                     onTap: () {
                       _openCamera(context);
+                      Navigator.pop(context);
                     },
                   )
                 ],
@@ -117,7 +119,7 @@ class _CameraScreenState extends State<CameraScreen> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         toolbarHeight: 70,
-        backgroundColor: Color(0xFF474E67) ,
+        backgroundColor: Color(0xFF474E67),
         elevation: 2.0,
         title: RichText(
           text: TextSpan(
@@ -137,19 +139,17 @@ class _CameraScreenState extends State<CameraScreen> {
             ],
           ),
         ),
-                    actions: [
-              IconButton(
-                  icon: Icon(Icons.check),
-                  onPressed: () => {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                          
-                                builder: (context) => SearchView(
-                                    searchQuery: "art&color=%23" +
-                                        searchQuery)))
-                      })
-            ],
+        actions: [
+          IconButton(
+              icon: Icon(Icons.check),
+              onPressed: () => {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SearchView(
+                                searchQuery: "art&color=%23" + searchQuery)))
+                  })
+        ],
       ),
       body: Container(
         color: Color(0xFF373D54),

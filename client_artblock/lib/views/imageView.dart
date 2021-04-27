@@ -63,11 +63,6 @@ class _ImageViewState extends State<ImageView> {
                               style: TextStyle(
                                   fontSize: 15, color: Colors.white70),
                             ),
-                            Text(
-                              "Image will be saved on pins screen",
-                              style: TextStyle(
-                                  fontSize: 12, color: Colors.white70),
-                            )
                           ],
                         ),
                       ),

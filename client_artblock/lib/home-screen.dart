@@ -20,27 +20,9 @@ class Home extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          SizedBox(height: 250),
-         // Image.asset('assets/graphics/artblock.png'),
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                // global text style
-                fontSize: 45,
-              ),
-              children: <TextSpan>[
-                TextSpan(
-                    text: 'Art',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold)),
-                TextSpan(
-                    text: 'Block',
-                    style: TextStyle(
-                        color: const Color(0xFFCC65C2), fontWeight: FontWeight.bold)),
-              ],
-            ),
-          ),
-          SizedBox(height: 30),
+          SizedBox(height: 120),
+          Image.asset('assets/graphics/artblock.png'),
+          SizedBox(height: 20),
           Container(
               padding: EdgeInsets.symmetric(horizontal: 40.0),
               child: Card(

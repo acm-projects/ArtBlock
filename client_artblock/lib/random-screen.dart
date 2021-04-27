@@ -121,7 +121,7 @@ class _RandomPageState extends State<RandomPage> {
   }
 
   Future<Map<String, dynamic>> getData() async {
-    var response = await http.get("https://api.pexels.com/v1/curated",
+    var response = await http.get("https://api.pexels.com/v1/curated?page=2",
         headers: {"Authorization": apiKey});
     //var response = await http.get('http://10.0.2.2:8000/curated');
     //debugPrint(jsonDecode(response.body)[0]['url']);

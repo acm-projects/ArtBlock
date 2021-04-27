@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:artblock/model/photos_model.dart';
 import 'package:artblock/views/imageView.dart';
 import 'package:flutter/material.dart';
@@ -13,10 +11,10 @@ Widget BrandName() {
         TextSpan(
             text: 'Art',
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
-                    TextSpan(
-        text: 'Block',
-        style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFFCC66C2))),
-        
+        TextSpan(
+            text: 'Block',
+            style: TextStyle(
+                fontWeight: FontWeight.bold, color: Color(0xFFCC66C2))),
       ]));
 }
 
