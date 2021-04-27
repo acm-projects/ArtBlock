@@ -26,19 +26,23 @@ class _NavState extends State<Nav> {
         child: _widgetOptions.elementAt(_selectedScreen),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedIconTheme: IconThemeData(color: Color(0xffCC66C2)),
+        backgroundColor:  Color(0xff474E67),
         items: [
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.shuffle,
-              ),
-              label: 'random'),
+              icon: Icon(Icons.star,),
+              label: 'Trending'
+          ),
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-              ),
-              label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.push_pin), label: 'pins'),
+              icon: Icon(Icons.home,),
+              label: 'Home'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.push_pin),
+            label: 'Pins'
+          )
         ],
+        selectedItemColor: Color(0xffCC66C2),
         currentIndex: _selectedScreen,
         onTap: _onItemTap,
       ),

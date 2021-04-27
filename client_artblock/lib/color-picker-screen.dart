@@ -10,24 +10,40 @@ class _ColorPageState extends State<ColorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.black,
+      backgroundColor: Color(0xff373D54),
       body: Column(
         children: <Widget>[
           AppBar(
-            title: Text(
-              'ArtBlock',
-              style: GoogleFonts.poppins(fontSize: 20),
+            toolbarHeight: 70,
+            backgroundColor: Color(0xFF474E67),
+          title: RichText(
+          text: TextSpan(
+            style: TextStyle(
+              // global text style
+              fontSize: 20,
+            ),
+            children: <TextSpan>[
+              TextSpan(
+                  text: 'Image',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold)),
+              TextSpan(
+                  text: 'Select',
+                  style: TextStyle(
+                      color: Color(0xFFCC66C2), fontWeight: FontWeight.bold)),
+            ],
+              )
             ),
             elevation: 4.0,
             leading: IconButton(
-                icon: Icon(Icons.arrow_back_ios_sharp),
+                icon: Icon(Icons.arrow_back_ios_sharp, color: Colors.white),
                 onPressed: () => {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Nav()))
                     }),
             actions: [
               IconButton(
-                  icon: Icon(Icons.check),
+                  icon: Icon(Icons.check, color: Colors.white),
                   onPressed: () => {
                     search = _customColor.value.toRadixString(16),
                     search = search.substring(2, search.length),
@@ -42,29 +58,19 @@ class _ColorPageState extends State<ColorPage> {
                       })
             ],
           ),
-          SizedBox(height: 15),
-          Container(
-            width: 350,
-            height: 100,
-            child: Center(
-              child: Text(
-                'My current color is: ',
-                style: GoogleFonts.poppins(fontSize: 15),
-              ),
-            ),
-            color: _customColor,
-          ),
+          SizedBox(height: 100),
           Card(
-              elevation: 4.0,
-              margin: EdgeInsets.all(30.0),
-              child: new ColorPicker(
-                color: Colors.blue,
-                onChanged: (value) {
-                  setState(() {
-                    _customColor = value;
-                  });
-                },
-              ))
+            margin: EdgeInsets.fromLTRB(15, 50, 15, 50),
+            child: new ColorPicker(
+                  
+                  color: Colors.blue,
+                  onChanged: (value) {
+                    setState(() {
+                      _customColor = value;
+                    });
+                  },
+                ),
+          )
         ],
       ),
     );

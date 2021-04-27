@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:artblock/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:image_picker/image_picker.dart';
@@ -8,12 +9,6 @@ import 'package:path/path.dart';
 import 'package:palette_generator/palette_generator.dart';
 
 /* add image_picker to dependencies under yaml */
-void main() {
-  runApp(new MaterialApp(
-    title: "Camera",
-    home: CameraScreen(),
-  ));
-}
 
 class CameraScreen extends StatefulWidget {
   @override
@@ -21,6 +16,7 @@ class CameraScreen extends StatefulWidget {
 }
 
 class _CameraScreenState extends State<CameraScreen> {
+  String searchQuery;
   File imageFile;
   // upload from gallery method
   _openGallery(BuildContext context) async {
@@ -37,7 +33,8 @@ class _CameraScreenState extends State<CameraScreen> {
     this.setState(() {
       imageFile = localImage;
     });
-    getData();
+
+    searchQuery = await getData();
 
     Navigator.of(context).pop();
   }
@@ -57,7 +54,8 @@ class _CameraScreenState extends State<CameraScreen> {
     this.setState(() {
       imageFile = localImage;
     });
-    getData();
+
+    searchQuery = await getData();
 
     Navigator.of(context).pop();
   }
@@ -94,44 +92,84 @@ class _CameraScreenState extends State<CameraScreen> {
   // shows selected image or tells the user that no image is selected
   Widget _deicdeImageView() {
     if (imageFile == null) {
-      return Text("No Image Selected");
+      return new Text('No Image Selected',
+          style: TextStyle(
+            //inbuilt named colors
+            color: Colors.white,
+          ));
     } else {
       return Image.file(imageFile, width: 400, height: 400);
     }
   }
 
-  Future<List<dynamic>> getData() async {
+  Future<String> getData() async {
     var paletteGenerator = await PaletteGenerator.fromImageProvider(
       Image.file(imageFile).image,
     );
     var domColor =
         paletteGenerator.dominantColor.color.toString().substring(8, 14);
-    print(domColor);
-    var response = await http.get('http://10.0.2.2:8000/color/hex/' + domColor);
-    //var response = await http.get('http://10.0.2.2:8000/query/frog');
-    //print(response.statusCode);
-    //debugPrint(response.body);
-    return jsonDecode(response.body);
+    return domColor;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Camera Screen"),
+        iconTheme: IconThemeData(color: Colors.white),
+        toolbarHeight: 70,
+        backgroundColor: Color(0xFF474E67) ,
+        elevation: 2.0,
+        title: RichText(
+          text: TextSpan(
+            style: TextStyle(
+              // global text style
+              fontSize: 20,
+            ),
+            children: <TextSpan>[
+              TextSpan(
+                  text: 'Image',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold)),
+              TextSpan(
+                  text: 'Select',
+                  style: TextStyle(
+                      color: Color(0xFFCC66C2), fontWeight: FontWeight.bold)),
+            ],
+          ),
+        ),
+                    actions: [
+              IconButton(
+                  icon: Icon(Icons.check),
+                  onPressed: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                          
+                                builder: (context) => SearchView(
+                                    searchQuery: "art&color=%23" +
+                                        searchQuery)))
+                      })
+            ],
       ),
       body: Container(
+        color: Color(0xFF373D54),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               _deicdeImageView(),
               ElevatedButton(
-                onPressed: () {
-                  _showChoiceDialog(context);
-                },
-                child: Text("Select Image"),
-              )
+                  style: ElevatedButton.styleFrom(primary: Color(0xFFCC66C2)),
+                  onPressed: () {
+                    _showChoiceDialog(context);
+                  },
+                  child: new Text(
+                    'SELECT',
+                    style: TextStyle(
+                      //inbuilt named colors
+                      color: Colors.white,
+                    ),
+                  ))
             ],
           ),
         ),
