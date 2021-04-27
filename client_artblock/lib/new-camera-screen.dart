@@ -132,11 +132,11 @@ class _CameraScreenState extends State<CameraScreen> {
               TextSpan(
                   text: 'Image',
                   style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold)),
+                      color: Colors.white, fontWeight: FontWeight.bold)),
               TextSpan(
                   text: 'Select',
                   style: TextStyle(
-                      color: Colors.red, fontWeight: FontWeight.bold)),
+                      color: Color(0xFFCC66C2), fontWeight: FontWeight.bold)),
             ],
           ),
         ),
