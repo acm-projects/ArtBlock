@@ -16,24 +16,23 @@ class _ColorPageState extends State<ColorPage> {
           AppBar(
             toolbarHeight: 70,
             backgroundColor: Color(0xFF474E67),
-          title: RichText(
-          text: TextSpan(
-            style: TextStyle(
-              // global text style
-              fontSize: 20,
-            ),
-            children: <TextSpan>[
-              TextSpan(
-                  text: 'Image',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold)),
-              TextSpan(
-                  text: 'Select',
-                  style: TextStyle(
-                      color: Color(0xFFCC66C2), fontWeight: FontWeight.bold)),
-            ],
-              )
-            ),
+            title: RichText(
+                text: TextSpan(
+              style: TextStyle(
+                // global text style
+                fontSize: 20,
+              ),
+              children: <TextSpan>[
+                TextSpan(
+                    text: 'Color',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold)),
+                TextSpan(
+                    text: 'Select',
+                    style: TextStyle(
+                        color: Color(0xFFCC66C2), fontWeight: FontWeight.bold)),
+              ],
+            )),
             elevation: 4.0,
             leading: IconButton(
                 icon: Icon(Icons.arrow_back_ios_sharp, color: Colors.white),
@@ -45,16 +44,14 @@ class _ColorPageState extends State<ColorPage> {
               IconButton(
                   icon: Icon(Icons.check, color: Colors.white),
                   onPressed: () => {
-                    search = _customColor.value.toRadixString(16),
-                    search = search.substring(2, search.length),
-                    print(_customColor.value.toRadixString(16)),
+                        search = _customColor.value.toRadixString(16),
+                        search = search.substring(2, search.length),
+                        print(_customColor.value.toRadixString(16)),
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                          
                                 builder: (context) => SearchView(
-                                    searchQuery: "art&color=%23" +
-                                        search)))
+                                    searchQuery: "art&color=%23" + search)))
                       })
             ],
           ),
@@ -62,14 +59,13 @@ class _ColorPageState extends State<ColorPage> {
           Card(
             margin: EdgeInsets.fromLTRB(15, 50, 15, 50),
             child: new ColorPicker(
-                  
-                  color: Colors.blue,
-                  onChanged: (value) {
-                    setState(() {
-                      _customColor = value;
-                    });
-                  },
-                ),
+              color: Colors.blue,
+              onChanged: (value) {
+                setState(() {
+                  _customColor = value;
+                });
+              },
+            ),
           )
         ],
       ),
