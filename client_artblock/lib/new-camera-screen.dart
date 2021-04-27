@@ -94,7 +94,12 @@ class _CameraScreenState extends State<CameraScreen> {
   // shows selected image or tells the user that no image is selected
   Widget _deicdeImageView() {
     if (imageFile == null) {
-      return Text("No Image Selected");
+      return new Text(
+              'No Image Selected',
+              style: TextStyle(
+                //inbuilt named colors
+                color: Colors.white,
+              );
     } else {
       return Image.file(imageFile, width: 400, height: 400);
     }
@@ -118,7 +123,11 @@ class _CameraScreenState extends State<CameraScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Take A Picture Or Select An Image"),
+        title: new Text(
+              'Image Select',
+              style: TextStyle(
+                //inbuilt named colors
+                color: Colors.white),
         backgroundColor: Color(0xFF474E67),
       ),
       body: Container(
