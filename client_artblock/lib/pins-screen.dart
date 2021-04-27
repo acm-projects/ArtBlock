@@ -33,21 +33,14 @@ class _PinsState extends State<Pins> {
         if (apicall.hasData) {
           List urls = apicall.data;
           return Scaffold(
-              backgroundColor: Colors.white,
-              appBar: AppBar(
-                backgroundColor: Colors.white,
-                elevation: 0.0,
-                title: Text(
-                  "MY PROFILE",
-                  style: TextStyle(
-                      color: Colors.redAccent, fontWeight: FontWeight.bold),
-                ),
-              ),
+
+              backgroundColor: Color(0xff373D54),
               body: Center(
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  SizedBox(height: 118,),
                   CircleAvatar(
                     radius: 56,
                     backgroundImage: NetworkImage(
@@ -58,39 +51,39 @@ class _PinsState extends State<Pins> {
                     height: 12.0,
                   ),
                   Text(
-                    "John Doe",
+                    "Jenna Lake",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),
                   ),
                   Text(
-                    "@johndoe",
+                    "@jennaLake",
                     style: TextStyle(
-                      color: Colors.redAccent,
+                      color: Color(0xffCC66C2),
                       fontWeight: FontWeight.w400,
                       fontSize: 16,
                     ),
                   ),
                   SizedBox(
-                    height: 12.0,
+                    height: 30.0,
                   ),
-                  Divider(height: 18.0, thickness: 0.6, color: Colors.black),
                   Expanded(
                       child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 8.0),
                     child: GridView.builder(
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisSpacing: 3.0,
+                          crossAxisSpacing: 3.0,
                           crossAxisCount: 3,
                         ),
                         itemCount: urls.length,
                         itemBuilder: (context, index) {
                           return Container(
-                            margin: EdgeInsets.symmetric(horizontal: 2.0),
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
                                 image: DecorationImage(
+                                    fit: BoxFit.cover,
                                     image: NetworkImage(
                                 urls[index]))),
                           );
