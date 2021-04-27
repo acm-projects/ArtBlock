@@ -1,18 +1,23 @@
+import 'dart:js';
+
 import 'package:artblock/model/photos_model.dart';
 import 'package:artblock/views/imageView.dart';
 import 'package:flutter/material.dart';
 
 Widget BrandName() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: <Widget>[
-      Text('Art', style: TextStyle(color: Colors.black87)),
-      Text(
-        'Block',
-        style: TextStyle(color: Colors.red),
-      )
-    ],
-  );
+  return RichText(
+      text: TextSpan(
+          text: '',
+          style: TextStyle(fontSize: 20),
+          children: <TextSpan>[
+        TextSpan(
+            text: 'Art',
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+                    TextSpan(
+        text: 'Block',
+        style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFFCC66C2))),
+        
+      ]));
 }
 
 Widget photosList({List<PhotosModel> photos, context}) {
@@ -30,9 +35,11 @@ Widget photosList({List<PhotosModel> photos, context}) {
             child: GestureDetector(
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => ImageView(
-                  imgUrl: photo.src.portrait,
-                )));
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ImageView(
+                          imgUrl: photo.src.portrait,
+                        )));
           },
           child: Hero(
             tag: photo.src.portrait,
